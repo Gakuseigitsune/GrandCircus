@@ -18,6 +18,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_3-MenuObj", "Lab3_3-Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_2_2-Menu", "Lab3_2_2-Menu\Lab3_2_2-Menu.csproj", "{BD36F32C-CD8B-443C-A287-711BB856B7C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_1-DiceRoller", "Lab4_1-DiceRoller\Lab4_1-DiceRoller.csproj", "{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_2-MovieList", "Lab4_2-MovieList\Lab4_2-MovieList.csproj", "{0A086AD0-B51F-4288-85CD-5B4C744D9539}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +48,14 @@ Global
 		{BD36F32C-CD8B-443C-A287-711BB856B7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD36F32C-CD8B-443C-A287-711BB856B7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD36F32C-CD8B-443C-A287-711BB856B7C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A086AD0-B51F-4288-85CD-5B4C744D9539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A086AD0-B51F-4288-85CD-5B4C744D9539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A086AD0-B51F-4288-85CD-5B4C744D9539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A086AD0-B51F-4288-85CD-5B4C744D9539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
