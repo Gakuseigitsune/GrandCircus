@@ -107,10 +107,24 @@ namespace Lab4_1_1_ClassObjPrac
             newShape.Print();
 
 
-            Book newTitle = new Book("NewTitle", "John", "Doe", "0000000000xABCD456", "Cooked Books, INC", 220400);
+            Book book1 = new Book("NewTitle", "John", "Doe", "0000000000xABCD456", "Cooked Books, INC", 220400);
+            Book book2 = new Book("NewTitle Part II", "John", "Doe", "0000000000xABCD456", "Cooked Books, INC", 300000);
+            Book book3 = new Book("NewTitle Part III", "John", "Doe", "0000000000xABCD456", "Cooked Books, INC", 350000);
+            Book book4 = new Book("OldTitle", "Jane", "Doe", "0000000000xABCD456", "Cooks Books, INC", 750000);
 
-            newTitle.Sell(25000);
-            newTitle.Print();
+            book1.Sell(25000);
+            book1.Print();
+
+            book2.Sell(25000);
+            book2.Print();
+
+            book3.Sell(25000);
+            book3.Print();
+
+            book4.Sell(25000);
+            book4.Print();
+
+
 
 
 
