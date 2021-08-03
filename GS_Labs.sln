@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_2-MovieList", "Lab4_2-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_1_1-ClassObjPrac", "Lab4_1_1-ClassObjPrac\Lab4_1_1-ClassObjPrac.csproj", "{FA59C150-61FB-4E0A-9899-A8D3254AE925}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_2_2-ObjPrac", "Lab4_2_2-ObjPrac\Lab4_2_2-ObjPrac.csproj", "{4ADD748B-610A-46DB-BA76-67D76E5F95D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{FA59C150-61FB-4E0A-9899-A8D3254AE925}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA59C150-61FB-4E0A-9899-A8D3254AE925}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA59C150-61FB-4E0A-9899-A8D3254AE925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ADD748B-610A-46DB-BA76-67D76E5F95D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ADD748B-610A-46DB-BA76-67D76E5F95D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ADD748B-610A-46DB-BA76-67D76E5F95D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ADD748B-610A-46DB-BA76-67D76E5F95D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
