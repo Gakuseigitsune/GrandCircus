@@ -36,9 +36,17 @@ namespace Lab4_2_2_ObjPrac
             this.Price = Price;
         }
 
+        public int GetID() => ID;
+
+        public string GetName() => Name;
+
+        public string GetDescription() => Description;
+
+        public double GetPrice() => Price;
+
 
         public void SetID(int ID) => this.ID = ID;
-        
+
         public void SetName(string Name)
         {
             if (String.IsNullOrWhiteSpace(Name)) this.Name = "EMPTY";
@@ -107,19 +115,67 @@ namespace Lab4_2_2_ObjPrac
             Thread.Sleep(1000);
 
 
-            foreach (MenuItem m in menuItems) 
+            foreach (MenuItem m in menuItems)
             {
                 Console.WriteLine($"{m}\n");
                 Thread.Sleep(550);
 
             }
 
+            Console.WriteLine("Testing Setters..\n");
+            Thread.Sleep(1000);
+
+            foreach (MenuItem m in menuItems)
+            {
+                if (menuItems.IndexOf(m) % 2 == 0)
+                {
+                    m.SetPrice(0.10);
+                    m.SetName(null);
+                    m.SetName(null);
+                }
+                else
+                {
+                    m.SetPrice(20);
+                    m.SetName("");
+                    m.SetName("");
+                }
+
+                m.SetID(r.Next(1001));
+
+                Console.WriteLine($"{m}\n");
+
+                Thread.Sleep(550);
+
+            }
+
+            Console.WriteLine("Testing Getters..\n");
+            Thread.Sleep(1000);
+
+            foreach (MenuItem m in menuItems)
+            {
+
+                Console.Write(" {0}", m.GetName());                
+                Console.WriteLine(" ({0})", m.GetID());
+                Thread.Sleep(250);
+                Console.WriteLine(" \"{0}\"", m.GetDescription());
+                Thread.Sleep(250);
+                Console.WriteLine(" -{0:C}\n", m.GetPrice());
+
+
+                Thread.Sleep(350);
+
+            }
+
+            Console.WriteLine("\nTest completed!");
+            Console.ReadLine();
 
 
 
 
 
-         
+
+
+
 
 
 
