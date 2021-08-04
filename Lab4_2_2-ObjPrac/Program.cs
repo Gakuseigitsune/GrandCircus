@@ -10,6 +10,7 @@ namespace Lab4_2_2_ObjPrac
         private string Name;
         private string Description;
         private double Price;
+        
 
         /*public MenuItem()                               //for testing ToString()
           {
