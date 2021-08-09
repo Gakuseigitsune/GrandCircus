@@ -8,27 +8,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2_2-PowerTable", "Lab2_2-PowerTable\Lab2_2-PowerTable.csproj", "{F93A7230-4AEA-4BD7-8419-EEFCF171ABC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2_2-PowerTable", "Lab2_2-PowerTable\Lab2_2-PowerTable.csproj", "{F93A7230-4AEA-4BD7-8419-EEFCF171ABC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2_4-Factorial", "Lab2_4-Factorial\Lab2_4-Factorial.csproj", "{A5086A67-81F7-4D58-9EB9-359FC2A8B505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2_4-Factorial", "Lab2_4-Factorial\Lab2_4-Factorial.csproj", "{A5086A67-81F7-4D58-9EB9-359FC2A8B505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_1-StudentInfo", "Lab3_1-StudentInfo\Lab3_1-StudentInfo.csproj", "{8ADD7E00-BAE3-4738-8FD3-8B1EF460908B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3_1-StudentInfo", "Lab3_1-StudentInfo\Lab3_1-StudentInfo.csproj", "{8ADD7E00-BAE3-4738-8FD3-8B1EF460908B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_3-MenuObj", "Lab3_3-MenuObj\Lab3_3-MenuObj.csproj", "{7758524B-4F46-4838-9D9D-3940036CE514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3_3-MenuObj", "Lab3_3-MenuObj\Lab3_3-MenuObj.csproj", "{7758524B-4F46-4838-9D9D-3940036CE514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab3_2_2-Menu", "Lab3_2_2-Menu\Lab3_2_2-Menu.csproj", "{BD36F32C-CD8B-443C-A287-711BB856B7C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3_2_2-Menu", "Lab3_2_2-Menu\Lab3_2_2-Menu.csproj", "{BD36F32C-CD8B-443C-A287-711BB856B7C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_1-DiceRoller", "Lab4_1-DiceRoller\Lab4_1-DiceRoller.csproj", "{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4_1-DiceRoller", "Lab4_1-DiceRoller\Lab4_1-DiceRoller.csproj", "{FDF70BF9-1FFF-4125-916C-891E3B9EDFE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_2-MovieList", "Lab4_2-MovieList\Lab4_2-MovieList.csproj", "{0A086AD0-B51F-4288-85CD-5B4C744D9539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4_2-MovieList", "Lab4_2-MovieList\Lab4_2-MovieList.csproj", "{0A086AD0-B51F-4288-85CD-5B4C744D9539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_1_1-ClassObjPrac", "Lab4_1_1-ClassObjPrac\Lab4_1_1-ClassObjPrac.csproj", "{FA59C150-61FB-4E0A-9899-A8D3254AE925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4_1_1-ClassObjPrac", "Lab4_1_1-ClassObjPrac\Lab4_1_1-ClassObjPrac.csproj", "{FA59C150-61FB-4E0A-9899-A8D3254AE925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_2_2-ObjPrac", "Lab4_2_2-ObjPrac\Lab4_2_2-ObjPrac.csproj", "{4ADD748B-610A-46DB-BA76-67D76E5F95D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4_2_2-ObjPrac", "Lab4_2_2-ObjPrac\Lab4_2_2-ObjPrac.csproj", "{4ADD748B-610A-46DB-BA76-67D76E5F95D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2_1-RoomCalc", "Lab2_1-RoomCalc\Lab2_1-RoomCalc.csproj", "{8BEE8EF7-24AB-43EC-80CF-5D6225852245}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2_1-RoomCalc", "Lab2_1-RoomCalc\Lab2_1-RoomCalc.csproj", "{8BEE8EF7-24AB-43EC-80CF-5D6225852245}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4_3-CMS", "Lab4_3-CMS\Lab4_3-CMS.csproj", "{B51AE65E-A59F-45C7-BB39-6207A139C4D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4_3-CMS", "Lab4_3-CMS\Lab4_3-CMS.csproj", "{B51AE65E-A59F-45C7-BB39-6207A139C4D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab5_1-RPG", "Lab5_1-RPG\Lab5_1-RPG.csproj", "{1611681D-02CD-443B-80A8-0043B312CACA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,10 @@ Global
 		{B51AE65E-A59F-45C7-BB39-6207A139C4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B51AE65E-A59F-45C7-BB39-6207A139C4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B51AE65E-A59F-45C7-BB39-6207A139C4D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1611681D-02CD-443B-80A8-0043B312CACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1611681D-02CD-443B-80A8-0043B312CACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1611681D-02CD-443B-80A8-0043B312CACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1611681D-02CD-443B-80A8-0043B312CACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
