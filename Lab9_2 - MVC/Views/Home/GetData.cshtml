@@ -1,7 +1,32 @@
 ﻿
+@model Visitor
+
 @{
     ViewData["Title"] = "GetData";
 }
 
 <h1>GetData</h1>
+
+
+Welcome! @Model.FirstName @Model.LastName
+
+
+(Redirecting back to start)
+
+
+<script language="javascript">
+
+    window.setTimeout(redirectToHome, 5000);
+
+    function redirectToHome() {
+
+        window.location.replace("MyPage");
+
+    }
+
+
+</script>
+
+
+
 
