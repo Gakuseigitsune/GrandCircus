@@ -1,6 +1,8 @@
 ﻿
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "User Login";
+    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
+    else ViewData["user"] = "Login";
 }
 
 <link href="~/css/Styles.css" rel="stylesheet" />

@@ -1,9 +1,8 @@
 ﻿@model Usr
 @{
-    ViewData["Title"] = "AskAQ";
-
-
-
+    ViewData["Title"] = "Ask a question";
+    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
+    else ViewData["user"] = "Login";
 }
 
 <link href="~/css/Styles.css" rel="stylesheet" />
@@ -34,11 +33,12 @@
 <form method="post" action="/UserControls/PostQ">
     <input value="@Model.Username" name="Username" /><br />
     Title: <input type="text" name="Title" /><br />
-    <label> Question <br />
+    <label>
+        Question <br />
 
-    <textarea id="Detail" name="Detail" rows="5" cols="20"></textarea>
+        <textarea id="Detail" name="Detail" rows="5" cols="20"></textarea>
 
-    </label><br /> 
+    </label><br />
     <!-- Question <br /><input type="text" name="Detail" /><br /> -->
     <input type="datetime" value="@DateTime.Now" name="Posted" /><br />
     Category: <input type="text" name="Category" /><br />

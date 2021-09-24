@@ -7,7 +7,7 @@ namespace Lab11_2_StackOvr.Models
 {
     public class QAns
     {
-        public Question Q;
+        public Question Q = new Question();
         public List<Answer> Answers = new List<Answer>();
 
     }

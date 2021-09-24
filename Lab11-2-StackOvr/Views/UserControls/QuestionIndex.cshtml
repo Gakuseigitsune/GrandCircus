@@ -42,9 +42,9 @@
         <table style="padding:0px 0px 0px 0px; border: none; margin: 0px 0px 0px 0px; color:#314631">
             <tr>
                 <td style="padding:0px 25px 0px 0px;">
-                    tags:  @foreach (string tag in q._Tags)
-                    {<i>#@tag </i>}
+                    tags:  @foreach (string tag in q._Tags) {<i>#@tag </i>}                   
                 </td>
+
                 <td style="padding:0px 25px 0px 0px;"> <a asp-action="AnswersDetail" asp-route-QID="@q.ID">-@DAL.GetAllAnswers(q.ID).Count answers</a></td>
                 <td style="padding:0px 25px 0px 0px;"> Posted @q.Posted </td>
                 <td style="padding:0px 25px 0px 0px;">

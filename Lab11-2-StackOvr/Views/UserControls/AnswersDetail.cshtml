@@ -1,6 +1,9 @@
-﻿
+﻿@model QAns
+
 @{
     ViewData["Title"] = "AnswersDetail";
+    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
+    else ViewData["user"] = "Login";
 }
 
 <link href="~/css/Styles.css" rel="stylesheet" />
@@ -26,4 +29,70 @@
         </tr>
     </table>
 </div>
+
+<table>
+    <tr>
+
+        <td><h2>@Model.Q.Title</h2></td>
+
+        <td><h4>Category: <i>@Model.Q.Category</i></h4></td>
+        <td>
+            <h4>
+            tags:  @foreach (string tag in Model.Q._Tags)
+            {<i>#@tag </i>}
+            </h4>
+        </td>
+        <td><h4>(@Model.Q.sStatus())</h4></td>
+        <td><h4>Posted @Model.Q.Posted</h4></td>
+
+    </tr>
+
+    <tr>
+        <td style="text-align:justify;">@Model.Q.Detail</td>
+    </tr>
+</table>
+
+
+<br />
+<br />
+
+
+@foreach (Answer ans in Model.Answers)
+{
+
+    <div class="question">
+
+        <table>
+
+            <tr>
+
+                <td><h2>@ans.ID</h2></td>
+                <td><h4> - from @ans.Username on @ans.Posted</h4></td>
+                <td>
+                    <b>
+                        @if (ans.Upvotes < 0)
+                        {
+                            <font color="red">@ans.Upvotes</font>
+                        }
+                        else
+                        {
+                            <font color="green">@ans.Upvotes</font>
+                        }
+                    </b>
+                </td>
+
+            </tr>
+
+            <tr>
+
+
+
+            </tr>
+
+
+        </table>
+
+    </div>
+
+}
 

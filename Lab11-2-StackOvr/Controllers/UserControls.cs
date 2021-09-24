@@ -12,6 +12,20 @@ namespace Lab11_2_StackOvr.Controllers
     public class UserControls : Controller
     {
 
+        public IActionResult AnswerAQ(Question q)
+        {
+            if (DAL.sessionUser == null) return View("Login");
+            return View(q);
+        }
+
+        public IActionResult PostAns(Answer newA)
+        {
+            DAL.PostA(newA);
+
+            return Redirect("QuestionIndex");
+
+        }
+
 
         public IActionResult UserPage(int UID)
         {
@@ -20,12 +34,13 @@ namespace Lab11_2_StackOvr.Controllers
 
         }
 
-        public IActionResult AnswersDetail(int QUID)
+        public IActionResult AnswersDetail(int QID)
         {
+
             QAns QA_pair = new QAns();
 
-            QA_pair.Q = DAL.GetQuestion(QUID);
-            QA_pair.Answers = DAL.GetAllAnswers(QUID);
+            QA_pair.Q = DAL.GetQuestion(QID);
+            QA_pair.Answers = DAL.GetAllAnswers(QID);
 
           
             return View(QA_pair);
