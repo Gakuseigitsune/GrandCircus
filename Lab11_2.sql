@@ -68,4 +68,4 @@ select * from Users;
 select * from questions;
 select * from answers;
 
-delete from questions where ID > 0;
+#delete from questions where ID > 0; 
