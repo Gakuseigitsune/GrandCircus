@@ -9,11 +9,12 @@
 <link href="~/css/Styles.css" rel="stylesheet" />
 
 
+
 <div class="header">
 
     <table>
         <tr>
-            <td class="header"><h1>@ViewData["Title"]</h1></td>
+            <td class="header" style="font-weight: bold; font-size: x-large; ">@ViewData["Title"]</td>
 
             @if (DAL.sessionUser == null)
             {
@@ -21,8 +22,11 @@
             }
             else
             {
-                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
-                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
+                <td class="header">
+
+                    <a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a> <sub><a asp-action="Logout" name="Logout?"><i>( Logout )</i></a></sub>
+
+                </td>
                 <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
             }
 
@@ -30,27 +34,44 @@
     </table>
 </div>
 
-<table>
-    <tr>
+<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-        <td><h2>@Model.Q.Title</h2></td>
+<div style=" padding: 5px 5px 20px 5px; background: none; border-radius:30px; border-color:#070707; border:double; ">
 
-        <td><h4>Category: <i>@Model.Q.Category</i></h4></td>
-        <td>
-            <h4>
-            tags:  @foreach (string tag in Model.Q._Tags)
-            {<i>#@tag </i>}
-            </h4>
-        </td>
-        <td><h4>(@Model.Q.sStatus())</h4></td>
-        <td><h4>Posted @Model.Q.Posted</h4></td>
+    <table>
 
-    </tr>
+        <tr>
 
-    <tr>
-        <td style="text-align:justify;">@Model.Q.Detail</td>
-    </tr>
-</table>
+            <td class="detail" colspan="6"><h1>@Model.Q.Title</h1></td>
+
+            <td class="detail" colspan="6"><h2>Category: <i>@Model.Q.Category</i></h2></td>
+
+
+
+            <td class="detail"><h2>(@Model.Q.sStatus())</h2></td>
+            <td class="detail">Posted @Model.Q.Posted</td>
+
+        </tr>
+
+        <tr>
+            <td style="padding: 30px; text-align:justify; border-radius: 50px;  " colspan="20">"@Model.Q.Detail"</td>
+        </tr>
+        <tr>
+            <td style="padding: 0px 20px 0px 20px"><b>@Model.Answers.Count</b> answers</td>
+            <td><h2>tags:</h2></td>
+
+            @foreach (string tag in Model.Q._Tags)
+            {
+                <td class="tags">#@tag </td>
+            }
+        </tr>
+
+    </table>
+
+
+</div>
+
 
 
 <br />
@@ -60,33 +81,47 @@
 @foreach (Answer ans in Model.Answers)
 {
 
-    <div class="question">
+    string ansClass = "";
+
+    if (ans.Upvotes < 0) ansClass = "downvote";
+    else if (ans.Upvotes >= 3) ansClass = "upvote";
+    else ansClass = "answer";
+
+
+    <div class="@ansClass">
 
         <table>
 
+            <tr style="color:inherit;" >
+
+                <td ><h2>Answer ID @ans.ID</h2></td>
+                <td rowspan="2" style="padding-left: 20px; padding-right: 30px; border-right: double; border-radius:10px;"> from <b><i>@ans.Username</i></b><br />on @ans.Posted</td>
+                <td style="padding-left: 20px;" colspan="15" rowspan="2" >@ans.Detail</td>
+
+            </tr>
             <tr>
 
-                <td><h2>@ans.ID</h2></td>
-                <td><h4> - from @ans.Username on @ans.Posted</h4></td>
-                <td>
-                    <b>
-                        @if (ans.Upvotes < 0)
-                        {
-                            <font color="red">@ans.Upvotes</font>
-                        }
-                        else
-                        {
-                            <font color="green">@ans.Upvotes</font>
-                        }
-                    </b>
+                <td style="padding-left:20px; font-size: xx-large;">
+                    <sup>
+
+                        <b>
+                            @if (ans.Upvotes < 0)
+                            {
+                                <font color="red">@ans.Upvotes</font>
+                            }
+                            else
+                            {
+                                <font color="green">@ans.Upvotes</font>
+                            }
+                        </b>
+
+                    </sup>
+
                 </td>
 
             </tr>
 
             <tr>
-
-
-
             </tr>
 
 
@@ -94,5 +129,11 @@
 
     </div>
 
+
+
 }
+
+
+
+
 
