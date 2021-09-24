@@ -1,0 +1,77 @@
+﻿@model List<Question>;
+@{
+    ViewData["Title"] = "QuestionIndex";
+    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
+    else ViewData["user"] = "Login";
+}
+
+<link href="~/css/Styles.css" rel="stylesheet" />
+
+
+<div class="header">
+
+    <table>
+        <tr>
+            <td class="header"><h1>@ViewData["Title"]</h1></td>
+
+            @if (DAL.sessionUser == null)
+            {
+                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
+            }
+            else
+            {
+                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
+                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
+                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
+            }
+
+        </tr>
+    </table>
+
+</div>
+
+
+
+
+@foreach (Question q in Model)
+{
+    <div class="question">
+        <a asp-action="QuestionDetail" asp-route-QID="@q.ID"><h2>@q.Title</h2></a><br /><br />
+
+        <h4>Category: <i>@q.Category</i></h4> 
+        <table style="padding:0px 0px 0px 0px; border: none; margin: 0px 0px 0px 0px; color:#314631">
+            <tr>
+                <td style="padding:0px 25px 0px 0px;">
+                    tags:  @foreach (string tag in q._Tags)
+                    {<i>#@tag </i>}
+                </td>
+                <td style="padding:0px 25px 0px 0px;"> <a asp-action="AnswersDetail" asp-route-QID="@q.ID">-@DAL.GetAllAnswers(q.ID).Count answers</a></td>
+                <td style="padding:0px 25px 0px 0px;"> Posted @q.Posted </td>
+                <td style="padding:0px 25px 0px 0px;">
+
+                    @if (DAL.sessionUser != null)
+                    {
+                        @if (q.Username == DAL.sessionUser.Username || DAL.sessionUser.isAdmin)
+                        {
+                            <a asp-controller="AdminControls" asp-action="EditQ" asp-route-QID="@q.ID">(@q.sStatus())</a>
+                        }
+                        else
+                        {
+                            <a asp-action="EditQ">(@q.sStatus())</a>
+                        }
+
+                    }
+                    else
+                    {
+                       <a asp-action="Login">(@q.sStatus())</a>
+                    }
+
+                </td>
+                   
+        
+                </tr>
+        </table>
+    </div>
+
+
+}
