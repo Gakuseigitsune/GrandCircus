@@ -12,10 +12,51 @@ namespace Lab11_2_StackOvr.Controllers
     public class UserControls : Controller
     {
 
-        public IActionResult AnswerAQ(Question q)
+
+
+        public IActionResult Upvote(int AID, int QID)
         {
-            if (DAL.sessionUser == null) return View("Login");
-            return View(q);
+            Answer a = DAL.GetAnswer(AID);
+
+            a.Upvotes++;
+
+            DAL.EditA(a);
+
+            return Redirect($"/UserControls/AnswersDetail?QID={QID}");
+        }
+
+        public IActionResult Downvote(int AID, int QID)
+        {
+
+            Answer a = DAL.GetAnswer(AID);
+
+            a.Upvotes--;
+
+            DAL.EditA(a);
+
+            return Redirect($"/UserControls/AnswersDetail?QID={QID}");
+        }
+
+        public IActionResult CloseQ(int QID)
+        {
+            Question q = DAL.GetQuestion(QID);
+
+            q.Status = 1;
+
+            DAL.EditQ(q);
+
+            return Redirect($"/UserControls/QuestionDetail?QID={QID}");
+        }
+
+        public IActionResult Index() => View();  // mainly for tests
+
+        public IActionResult Answer(int AID) => View(DAL.GetAnswer(AID));
+
+
+        public IActionResult AnswerAQ(int QID)
+        {
+            if (DAL.sessionUser == null) return Redirect("Login");
+            return View(DAL.GetQuestion(QID));
         }
 
         public IActionResult PostAns(Answer newA)
@@ -27,12 +68,8 @@ namespace Lab11_2_StackOvr.Controllers
         }
 
 
-        public IActionResult UserPage(int UID)
-        {
+        public IActionResult UserPage(string UID) => View(DAL.GetAllByUser(UID));
 
-            return View(DAL.getUsr(UID));
-
-        }
 
         public IActionResult AnswersDetail(int QID)
         {
@@ -46,26 +83,21 @@ namespace Lab11_2_StackOvr.Controllers
             return View(QA_pair);
         }
 
-        public IActionResult QuestionDetail(int QUID)
+        public IActionResult QuestionDetail(int QID)
         {
             QAns QA_pair = new QAns();
 
-            QA_pair.Q = DAL.GetQuestion(QUID);
-            QA_pair.Answers = DAL.GetAllAnswers(QUID);
+            QA_pair.Q = DAL.GetQuestion(QID);
+            QA_pair.Answers = DAL.GetAllAnswers(QID);
 
             return View(QA_pair);
         }
 
 
-        public IActionResult QuestionIndex()
-        {
-            return View(DAL.GetAllQs());
-        }
+        public IActionResult QuestionIndex() => View(DAL.GetAllQs());
 
-        public IActionResult Login()
-        {
-            return View();
-        }
+        public IActionResult Login() => View();
+
 
         public IActionResult Logout()
         {

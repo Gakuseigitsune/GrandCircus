@@ -1,7 +1,8 @@
-﻿create database lab11_2;
+﻿#drop database lab11_2;
+create database lab11_2;
 use lab11_2;
 
-#drop database lab11_2;
+
 
 
 create table Users (
@@ -47,19 +48,19 @@ create table Answers (
     Upvotes int,
 	
     
-    primary key(ID), foreign key(QuestionID) references Questions(ID)
+    primary key(ID), foreign key(QuestionID) references Questions(ID), foreign key (Username) references Users(Username)
 
 );
-Alter table Answers add foreign key (Username) references Users(Username);
 
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('25', 'User03','Do this and not that','2021-09-23 19:40:58',3);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('25', 'User02','Do this and not that','2021-09-23 19:40:58',2);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('25', 'User01','Do this and not that','2021-09-23 19:40:58',-1);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('25', 'User05','Do this and not that','2021-09-23 19:40:58',0);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('26', 'User03','Do this and not that','2021-09-23 19:40:58',1);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('26', 'User02','Do this and not that','2021-09-23 19:40:58',2);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('26', 'User02','Do this and not that','2021-09-23 19:40:58',5);
-insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('26', 'User01','Do this and not that','2021-09-23 19:40:58',-2);
+
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('1', 'User03','Do this and not that','2021-09-23 19:40:58',3);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('2', 'User02','Do this and not that','2021-09-23 19:40:58',2);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('3', 'User01','Do this and not that','2021-09-23 19:40:58',-1);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('1', 'User05','Do this and not that','2021-09-23 19:40:58',0);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('2', 'User03','Do this and not that','2021-09-23 19:40:58',1);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('2', 'User02','Do this and not that','2021-09-23 19:40:58',2);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('3', 'User02','Do this and not that','2021-09-23 19:40:58',5);
+insert into Answers (QuestionID, Username, Detail, Posted, Upvotes) values ('3', 'User01','Do this and not that','2021-09-23 19:40:58',-2);
 
 
 

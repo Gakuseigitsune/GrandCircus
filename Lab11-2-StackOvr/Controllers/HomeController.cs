@@ -20,7 +20,8 @@ namespace Lab11_2_StackOvr.Controllers
 
         public IActionResult Index()
         {
-            return Redirect("UserControls/QuestionIndex");
+            return View();
+            //return Redirect("UserControls/QuestionIndex");
         }
 
         public IActionResult Privacy()

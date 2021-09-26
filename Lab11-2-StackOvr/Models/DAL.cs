@@ -13,6 +13,10 @@ namespace Lab11_2_StackOvr.Models
 
         public static Usr sessionUser = null;
 
+        public static bool isLogin()
+        {
+            return DAL.sessionUser != null;
+        }
 
         public static MySqlConnection DB;
         //public static MySqlConnection DB = new MySqlConnection("Server=localhost;Database=lab11_2;Uid=root;Password=def456");
@@ -114,6 +118,23 @@ namespace Lab11_2_StackOvr.Models
 
             string sql = "select * from Answers where QuestionID = @QID order by Upvotes desc";
             return DB.Query<Answer>(sql, keyvalues).ToList();
+        }
+
+        public static userQA GetAllByUser(string username)
+        {
+            userQA UserStuff = new userQA();
+
+            var keyvalues = new { Username = username };
+
+            string sql_1 = "select * from Answers where Username = @Username order by Upvotes desc";
+            string sql_2 = "select * from Questions where Username = @Username order by Posted desc";
+
+            UserStuff.UserAns = DB.Query<Answer>(sql_1, keyvalues).ToList();
+            UserStuff.UserQs = DB.Query<Question>(sql_2, keyvalues).ToList();
+
+            return UserStuff;
+
+
         }
 
 

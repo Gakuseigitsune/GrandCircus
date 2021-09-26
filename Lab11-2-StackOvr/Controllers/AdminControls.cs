@@ -11,13 +11,20 @@ namespace Lab11_2_StackOvr.Controllers
 {
     public class AdminControls : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+  
         public IActionResult EditQ (string UID)
         {
-            return Content("test");
+            return Content("edited question");
+        }
+
+        public IActionResult DeleteQ (string QID)
+        {
+            return Content("deleted question");
+        }
+
+        public IActionResult DeleteAns(string QID)
+        {
+            return Content("deleted answer");
         }
 
     }

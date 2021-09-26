@@ -1,34 +1,84 @@
-﻿
+﻿@model QAns
 @{
     ViewData["Title"] = "Question Detail";
-    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
-    else ViewData["user"] = "Login";
+    bool isClosed = Model.Q.Status > 0;
+    bool Admin = DAL.sessionUser != null && DAL.sessionUser.isAdmin;
 }
 
-<link href="~/css/Styles.css" rel="stylesheet" />
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
+<div style=" padding: 5px 5px 20px 5px; background: none; border-radius:30px; border-color:#070707; border:double; ">
 
-<div class="header">
+    <table style="margin-left:auto; margin-right:auto;">
 
-    <table>
         <tr>
-            <td class="header"><h1>@ViewData["Title"]</h1></td>
 
-            @if (DAL.sessionUser == null)
+            <td class="detail" colspan="6"><h1>@Model.Q.Title</h1></td>
+
+            <td class="detail" colspan="6"><h2>Category: <i>@Model.Q.Category</i></h2></td>
+
+
+
+            <td class="detail"><h2>(@Model.Q.sStatus())</h2></td>
+            <td class="detail">Posted @Model.Q.Posted</td>
+
+        </tr>
+
+        <tr>
+            <td style="padding: 30px; text-align:justify; border-radius: 50px;  " colspan="20">"@Model.Q.Detail"</td>
+        </tr>
+        <tr>
+            <td style="padding: 0px 20px 0px 20px"><a class="plain" asp-action="AnswersDetail" asp-route-QID="@Model.Q.ID"><b>@Model.Answers.Count</b> answers</a></td>
+            <td><h2>tags:</h2></td>
+
+            @foreach (string tag in Model.Q._Tags)
             {
-                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
+                <td class="tags">#@tag </td>
+            }
+        </tr>
+        <tr>
+            @if (!isClosed)
+            {
+                @if (DAL.isLogin() && (Model.Q.Username == DAL.sessionUser.Username || DAL.sessionUser.isAdmin))
+                {
+                    <td class="siteBtn" style="padding: 0px 20px 0px 20px; "><a class="plain" asp-action="CloseQ" asp-route-QID="@Model.Q.ID">(Close this question)</a></td>
+                }
+
+                if (DAL.isLogin() && Model.Q.Username != DAL.sessionUser.Username)
+                {
+                    <td class="siteBtn" style="padding: 0px 20px 0px 20px; "><a class="plain" asp-action="AnswerAQ" asp-route-QID="@Model.Q.ID"> Answer this question </a></td>
+                }
+
+
             }
             else
             {
-                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
-                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
-                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
+                <td class="siteBtn" style="padding: 0px 20px 0px 20px; ">(Closed)</td>
+
+
             }
+
+            @if (Admin)
+            {
+                <td class="siteBtn" style="padding: 0px 20px 0px 20px; background-color: red; color:#ffffff; ">
+                    <a class="plain" asp-controller="AdminControls" asp-action="DeleteQ" asp-route-QID="@Model.Q.ID">Delete this question</a>
+                </td>
+            }
+
+
+
+
+
+
 
         </tr>
 
     </table>
+
+
 </div>
 
-<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
-<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<br />
+<br />

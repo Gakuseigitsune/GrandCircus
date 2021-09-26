@@ -1,40 +1,13 @@
 ﻿@model QAns
-
 @{
     ViewData["Title"] = "AnswersDetail";
-    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
-    else ViewData["user"] = "Login";
+
+    bool isUserQ = DAL.isLogin() && Model.Q.Username == DAL.sessionUser.Username;
+    
+
+
 }
 
-<link href="~/css/Styles.css" rel="stylesheet" />
-
-
-
-<div class="header">
-
-    <table>
-        <tr>
-            <td class="header" style="font-weight: bold; font-size: x-large; ">@ViewData["Title"]</td>
-
-            @if (DAL.sessionUser == null)
-            {
-                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
-            }
-            else
-            {
-                <td class="header">
-
-                    <a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a> <sub><a asp-action="Logout" name="Logout?"><i>( Logout )</i></a></sub>
-
-                </td>
-                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
-            }
-
-        </tr>
-    </table>
-</div>
-
-<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <div style=" padding: 5px 5px 20px 5px; background: none; border-radius:30px; border-color:#070707; border:double; ">
@@ -102,20 +75,22 @@
             <tr>
 
                 <td style="padding-left:20px; font-size: xx-large;">
-                    <sup>
 
-                        <b>
-                            @if (ans.Upvotes < 0)
-                            {
-                                <font color="red">@ans.Upvotes</font>
-                            }
-                            else
-                            {
-                                <font color="green">@ans.Upvotes</font>
-                            }
-                        </b>
+                    @if (DAL.isLogin()) { <sub><a asp-action="Downvote" asp-route-AID="@ans.ID" asp-route-QID="@Model.Q.ID">-</a></sub> }
+                    
+                    <b>
+                        @if (ans.Upvotes < 0)
+                        {
+                            <font color="red">@ans.Upvotes</font>
+                        }
+                        else
+                        {
+                            <font color="green">@ans.Upvotes</font>
+                        }
+                    </b>
 
-                    </sup>
+                    @if (DAL.isLogin()) { <sup><a asp-action="Upvote" asp-route-AID="@ans.ID" asp-route-QID="@Model.Q.ID">+</a></sup> }
+                    
 
                 </td>
 

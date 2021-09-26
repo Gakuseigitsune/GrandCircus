@@ -44,8 +44,7 @@ namespace Lab11_2_StackOvr.Models
 
             set
             {
-                //string tagCapt = @"\""{1}(?<word>\w+)\""{1}";
-                //Regex r = new Regex(tagCapt);
+
 
                 int l = 0;
                 foreach (string tag in _Tags) l += tag.Length;

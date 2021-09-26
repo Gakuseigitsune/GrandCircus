@@ -1,39 +1,59 @@
 ﻿@model Usr
 @{
     ViewData["Title"] = "Ask a question";
-    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
-    else ViewData["user"] = "Login";
 }
 
-<link href="~/css/Styles.css" rel="stylesheet" />
-
-
-<div class="header">
-
-    <table>
-        <tr>
-            <td class="header"><h1>@ViewData["Title"]</h1></td>
-
-            @if (DAL.sessionUser == null)
-            {
-                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
-            }
-            else
-            {
-                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
-                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
-                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
-            }
-
-        </tr>
-    </table>
-</div>
-
-<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
+<center>
+<div style=" padding: 15px 15px 15px 15px; background: none; border-radius:30px; border-color:#070707; border:double; width:max-content;">
 
 
+
+
+    <form method="post" action="/UserControls/PostQ">
+
+
+
+        <table>
+
+            <tr>
+
+                <td  class="detail" colspan="1"><b>Username:</b><br /><input value="@Model.Username" name="Username" readonly="readonly" /></td>
+                <td  class="detail" colspan="1"><b>Title:</b><br /><input type="text" name="Title" placeholder="(Title of question)" required="required" /></td>
+
+                <td  class="detail" colspan="1"><b>Category: </b><br /> <i> <input type="text" name="Category" placeholder="(category)" /></i></td>
+
+
+
+
+                <td  class="detail"><b>Posted: </b><br /> <input type="datetime" value="@DateTime.Now" name="Posted" readonly="readonly" required="required" /></td>
+
+            </tr>
+
+            <tr>
+                <td style="border:none; padding: 30px; text-align:center; border-radius: 50px;" colspan="4">
+                    <b>Question</b><br /><br /><textarea id="Detail" name="Detail" rows="10" cols="120" maxlength="249"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tags" colspan="4" style="padding: 10px 10px 10px 10px;"><b>tags: </b><input type="text" name="Tags" placeholder="(separate tags with spaces)" /></td>
+            </tr>
+
+        </table>
+        <br />
+        <center><input type="submit" value="Post" /></center>
+
+
+    </form>
+
+
+</div>
+</center>
+
+
+<!--
 <form method="post" action="/UserControls/PostQ">
     <input value="@Model.Username" name="Username" /><br />
     Title: <input type="text" name="Title" /><br />
@@ -43,10 +63,11 @@
         <textarea id="Detail" name="Detail" rows="5" cols="20"></textarea>
 
     </label><br />
-    <!-- Question <br /><input type="text" name="Detail" /><br /> -->
+    <!-- Question <br /><input type="text" name="Detail" /><br /> 
     <input type="datetime" value="@DateTime.Now" name="Posted" /><br />
     Category: <input type="text" name="Category" /><br />
     Tags: (separate by spaces) <input type="text" name="Tags" /><br />
     <input type="submit" value="Post" />
 </form>
 
+-->

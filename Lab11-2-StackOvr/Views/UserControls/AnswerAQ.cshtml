@@ -1,33 +1,63 @@
-﻿
+﻿@model Question
 @{
     ViewData["Title"] = "AnswerAQ";
-    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
-    else ViewData["user"] = "Login";
 }
 
-<link href="~/css/Styles.css" rel="stylesheet" />
-
-
-<div class="header">
-
-    <table>
-        <tr>
-            <td class="header"><h1>@ViewData["Title"]</h1></td>
-
-            @if (DAL.sessionUser == null)
-            {
-                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
-            }
-            else
-            {
-                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
-                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
-                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
-            }
-
-        </tr>
-    </table>
-</div>
-
-<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<center>
+    <div style=" padding: 5px 5px 20px 5px; background: none; border-radius:30px; border-color:#070707; border:double; ">
+
+        <form method="post" action="/UserControls/PostAns">
+
+
+            <table>
+
+                <tr>
+
+                    <td class="detail" colspan="6"><h1>@Model.Title</h1></td>
+
+                    <td class="detail" colspan="6"><h2>Category: <i>@Model.Category</i></h2></td>
+
+
+
+                    <td class="detail"><h2>(@Model.sStatus())</h2></td>
+                    <td class="detail">Posted @Model.Posted</td>
+
+                </tr>
+
+                <tr>
+                    <td style="padding: 30px; text-align:justify; border-radius: 50px;  " colspan="20">"@Model.Detail"</td>
+                </tr>
+                <tr>
+                    <td><h2>tags:</h2></td>
+
+                    @foreach (string tag in Model._Tags)
+                    {
+                        <td class="tags">#@tag </td>
+                    }
+                </tr>
+                <tr>
+                    <td style="border:none; padding: 30px; text-align:center; border-radius: 50px;" colspan="24">
+                        <b>Answer</b><br /><br /><textarea id="Detail" name="Detail" rows="10" cols="120" maxlength="249"></textarea>
+                    </td>
+
+                </tr>
+
+            </table>
+
+            <input type="text" name="QuestionID" value="@Model.ID" hidden="hidden" />
+            <input type="text" name="Username" value="@DAL.sessionUser.Username" hidden="hidden" />
+            <input type="datetime" name="Posted" value="@DateTime.Now" hidden="hidden" />
+            <input type="submit" value="Post" />
+
+        </form>
+
+
+    </div>
+</center>
+
+
+<br />
+<br />

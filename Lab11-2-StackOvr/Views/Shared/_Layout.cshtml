@@ -4,45 +4,85 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Lab11_2_StackOvr</title>
+    <!--
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" /> 
+     -->
+    <link href="~/css/Styles.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Lab11_2_StackOvr</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+     
+
+        <script language="javascript">
+<!--
+
+            function LoginSubmit() {
+
+                document.getElementById("loginBar").submit();
+            }
+
+
+ //-->
+        </script>
+
+
+        <div class="header">
+
+            <table>
+                <tr>
+                    <td class="header"><b>@ViewData["Title"]</b></td>
+
+                    @if (!DAL.isLogin())
+                    {
+                        <td class="header"><a onclick="LoginSubmit()">Login</a></td>
+                        <td>
+
+                            <form method="post" action="/UserControls/uLogin" autocomplete="on" id="loginBar">
+                                <input type="text" name="Username" />
+                            </form>
+
+
+                        </td>
+
+                        <td>
+
+                            <form method="post" action="" autocomplete="off" id="PassWBar">
+                                <input type="text" name="Password" />
+                            </form>
+
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="Userpage">@DAL.sessionUser.Username</a></td>
+                        <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
+                        <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
+                    }
+
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
+
+
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
-            &copy; 2021 - Lab11_2_StackOvr - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @RenderSection("Scripts", required: false)
 </body>
 </html>

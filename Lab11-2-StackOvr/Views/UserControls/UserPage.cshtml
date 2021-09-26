@@ -1,36 +1,234 @@
-﻿
-
+﻿@model userQA
 
 @{
     ViewData["Title"] = "UserPage";
-    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
-    else ViewData["user"] = "Login";
 }
 
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<link href="~/css/Styles.css" rel="stylesheet" />
 
+    <table style="margin-left:auto; margin-right:auto;">
 
-<div class="header">
-
-    <table>
         <tr>
-            <td class="header"><h1>@ViewData["Title"]</h1></td>
 
-            @if (DAL.sessionUser == null)
-            {
-                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
-            }
-            else
-            {
-                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
-                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
-                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
-            }
+            <td>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th scope="col"> Answers to my questions</th>
+                            <th scope="col"> My Questions</th>
+                        </tr>
+
+                    </thead>
+
+                    @foreach (Question ques in Model.UserQs)
+                    {
+
+                        <tr>
+
+                            <td>
+                                @foreach (Answer ans in DAL.GetAllAnswers(ques.ID))
+                                {
+
+                                    string ansClass = "";
+
+                                    if (ans.Upvotes < 0) ansClass = "downvote";
+                                    else if (ans.Upvotes >= 3) ansClass = "upvote";
+                                    else ansClass = "answer";
+
+                                    <a asp-action="Answer" asp-route-AID="@ans.ID" class="plain">
+
+                                        <div class="@ansClass" style="background-color: #777df5; max-height:fit-content();">
+                                            <table>
+
+                                                <tr>
+
+                                                    <td style="font-size: medium; font-weight:bold; padding-right:2px;">
+
+                                                        @if (ans.Upvotes < 0)
+                                                        {
+                                                            <font color="red">@ans.Upvotes</font>
+                                                        }
+                                                        else if (ans.Upvotes > 1)
+                                                        {
+                                                            <font color="green">@ans.Upvotes</font>
+                                                        }
+                                                        else
+                                                        {
+                                                            <font color="black">@ans.Upvotes</font>
+                                                        }
+
+                                                    </td>
+
+                                                    <td style="font-size: small; padding-right:2px;"> from @ans.Username</td>
+
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </a>
+                                }
+
+                            </td>
+
+                            <td>
+                                @{
+
+                                    string ansClass2 = "";
+
+                                    if (DAL.GetAllAnswers(ques.ID).Count < 0) ansClass2 = "downvote";
+                                    else if (DAL.GetAllAnswers(ques.ID).Count >= 3) ansClass2 = "upvote";
+                                    else ansClass2 = "answer";
+                                }
+
+
+                                <div class="@ansClass2">
+
+                                    <table>
+
+                                        <tr style="color:inherit;">
+
+                                            <td><h2>Question ID @ques.ID</h2></td>
+                                            <td rowspan="2" style="padding-left: 20px; padding-right: 30px; border-right: double; border-radius:10px;"> from <b><i>You</i></b><br />on @ques.Posted</td>
+                                            <td style="padding-left: 20px;" colspan="15" rowspan="2">@ques.Detail</td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td style="padding-left:20px; font-size: xx-large;">
+                                                <sup>
+
+                                                    <b>
+                                                        @if (DAL.GetAllAnswers(ques.ID).Count == 0)
+                                                        {
+                                                            <font color="black">@DAL.GetAllAnswers(ques.ID).Count</font>
+                                                        }
+                                                        else
+                                                        {
+                                                            <font color="Green">@DAL.GetAllAnswers(ques.ID).Count</font>
+                                                        }
+                                                    </b>
+
+                                                </sup>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                        </tr>
+
+                                    </table>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+
+                    }
+                </table>
+
+            </td>
+
+            <!---------------------------------------------------------Answers------------------------------------------------------->
+
+            <td>
+
+                <table>
+
+                    <thead><tr><th>My Answers</th></tr></thead>
+
+
+                    <tr>
+                        <td colspan="@Model.UserQs.Count">
+
+                            @foreach (Answer ans in Model.UserAns)
+                            {
+
+                                string ansClass = "";
+
+                                if (ans.Upvotes < 0) ansClass = "downvote";
+                                else if (ans.Upvotes >= 3) ansClass = "upvote";
+                                else ansClass = "answer";
+
+
+                                <div class="@ansClass">
+
+                                    <table>
+
+                                        <tr style="color:inherit;">
+
+                                            <td><h2>Answer ID @ans.ID</h2></td>
+                                            <td rowspan="2" style="padding-left: 20px; padding-right: 30px; border-right: double; border-radius:10px;"> from <b><i>You</i></b><br />on @ans.Posted</td>
+                                            <td style="padding-left: 20px;" colspan="15" rowspan="2">@ans.Detail</td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td style="padding-left:20px; font-size: xx-large;">
+                                                <sup>
+
+                                                    <b>
+                                                        @if (ans.Upvotes < 0)
+                                                        {
+                                                            <font color="red">@ans.Upvotes</font>
+                                                        }
+                                                        else
+                                                        {
+                                                            <font color="green">@ans.Upvotes</font>
+                                                        }
+                                                    </b>
+
+                                                </sup>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <tr>
+                                        </tr>
+
+
+                                    </table>
+
+                                </div>
+
+
+
+                            }
+
+
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+            </td>
+
+
+
+
+
 
         </tr>
-    </table>
-</div>
 
-<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
-<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+

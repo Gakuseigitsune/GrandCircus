@@ -1,35 +1,8 @@
 ﻿
 @{
     ViewData["Title"] = "User Login";
-    if (DAL.sessionUser != null) ViewData["user"] = DAL.sessionUser.Username;
-    else ViewData["user"] = "Login";
 }
 
-<link href="~/css/Styles.css" rel="stylesheet" />
-
-
-<div class="header">
-
-    <table>
-        <tr>
-            <td class="header"><h1>@ViewData["Title"]</h1></td>
-
-            @if (DAL.sessionUser == null)
-            {
-                <td class="header"><a asp-action="Login">@ViewData["user"]</a></td>
-            }
-            else
-            {
-                <td class="header"><a asp-action="UserPage" asp-route-UID="@DAL.sessionUser.Username" name="">@ViewData["user"]</a></td>
-                <td class="header"><a asp-action="Logout" name="Logout?"><i>Logout</i></a></td>
-                <td class="header"><a asp-action="AskAQ">Ask a question</a></td>
-            }
-
-        </tr>
-    </table>
-</div>
-
-<div class="logo"><a class="logo" href="QuestionIndex"> {n u l l} Pointers* </a></div>
 <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
