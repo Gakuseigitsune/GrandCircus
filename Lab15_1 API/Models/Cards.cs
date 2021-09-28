@@ -11,12 +11,6 @@ namespace Lab15_1_API.Models
         public List<Card> cards { get; set; }
         public string deck_id { get; set; }
         public int remaining { get; set; }
-
-        
-
-
-
-
     }
 
     public class Card
@@ -25,7 +19,6 @@ namespace Lab15_1_API.Models
         public string value { get; set; }
         public string suit { get; set; }
         public string code { get; set; }
-
     }
 
 
@@ -33,22 +26,11 @@ namespace Lab15_1_API.Models
     {
         public static int MAX_CT = 5;
 
-        List<Card> userHand = new List<Card>(Hand.MAX_CT);
+        public List<Card> cards = new List<Card>();
 
-
-
-        public void AddCard(Card c) => userHand.Add(c);
-        public void DisCard(int index) => userHand.RemoveAt(index);
-        public void DisCard(Card c) => userHand.Remove(c);
-
-
-        public static void DrawHand(Hand h)
-        {
-
-
-        }
-
-
+        public void AddCard(Card c) => cards.Add(c);
+        public void DisCard(int index) => cards.RemoveAt(index);
+        public void DisCard(Card c) => cards.Remove(c);
 
     }
 }
