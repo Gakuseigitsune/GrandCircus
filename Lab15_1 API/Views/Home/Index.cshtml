@@ -4,29 +4,46 @@
 }
 
 
-<form form method="post" action="">
+<form form method="post" action="DisCards">
       
     <table>
 
 
 
-        <tr> <td><a href="DrawHand">Draw cards</a></td></tr>
-        <tr> <td></td></tr>
+        <tr> <td colspan="5" style="text-align:center;"><a href="GetHand">Draw cards</a></td></tr>
+       
 
 
+   
+
+      
         <tr>
 
-         <td></td>
+            @foreach (Card c in DAL.Session_Hand._cards)
+            {
+                <td style="padding:5px; border: double black;">
 
+                    <img src="@c.image" />
+                    <input type="checkbox" name="discarded" id="discarded" value="@c.code" />
+                </td>
+            }
 
+            <td rowspan="3">
+                @foreach(string c in DAL.Session_Discard)
+                {
+                    <div style="font-weight:bold;"> Discarded @c</div>
+                }
+            </td>
 
         </tr>
-
+       
 
         <tr>
-
-            <td></td>
-
+            <td colspan="2" style="text-align:center;" >@Model.deck_id</td>
+            <td style="text-align:center;">
+                <button type="submit">Discard selected</button>
+            </td>
+            <td colspan="3" style="text-align:center;" >Cards remaining: @Model.remaining</td>
         </tr>
 
 
@@ -35,4 +52,5 @@
 
 
     </table>
+
 </form>

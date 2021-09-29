@@ -8,9 +8,15 @@ namespace Lab15_1_API.Models
     public class Deck
     {
         public bool success { get; set; }
-        public List<Card> cards { get; set; }
         public string deck_id { get; set; }
+        public Card[] cards { get; set; }
         public int remaining { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("DECK {0} CARDS LEFT: {1}", deck_id, remaining);
+        }
+
     }
 
     public class Card
@@ -26,11 +32,15 @@ namespace Lab15_1_API.Models
     {
         public static int MAX_CT = 5;
 
-        public List<Card> cards = new List<Card>();
+        public List<Card> _cards = new List<Card>();
 
-        public void AddCard(Card c) => cards.Add(c);
-        public void DisCard(int index) => cards.RemoveAt(index);
-        public void DisCard(Card c) => cards.Remove(c);
+        public void AddCard(Card c) => _cards.Add(c);
+        public void DisCard(int index) => _cards.RemoveAt(index);
+        public void DisCard(Card c) => _cards.Remove(c);
 
+        public int Cards
+        {
+            get { return _cards.Count; }
+        }
     }
 }
