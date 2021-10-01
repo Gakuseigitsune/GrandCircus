@@ -25,11 +25,40 @@ namespace Lab15_2_CustomAPI.Models
         public static Movie GetMovie(string genre)
         {
             List<Movie> GenreSelected = DAL.GetAllMovies(genre);
-            return GenreSelected[r.Next(0, GenreSelected.Count + 1)];
+            return GenreSelected[r.Next(0, GenreSelected.Count)];
+        }
+
+        
+        public static Movie GetThisMovie(string name)
+        {
+            var queryObj = new { Name = name };
+            string query = "select * from movies where Name = @Name";
+
+            try
+            {
+                return DB.QuerySingle<Movie>(query, queryObj);
+            }
+            catch (System.InvalidOperationException)
+            {
+                return new Movie { Name = "no results found" };
+            }
+
+        }
+
+        public static List<Movie> GetTheseMovies(string name)
+        {
+            var queryObj = new { Name = name };
+            string query = "select * from movies where Name = @Name";
+
+            return DB.Query<Movie>(query, queryObj).ToList();
+
         }
 
 
 
+
+        public static List<Genre> GetAllGenre() => DB.GetAll<Genre>().ToList();
+        
 
         public static List<Movie> GetAllMovies() => DB.GetAll<Movie>().ToList();
 
@@ -40,10 +69,11 @@ namespace Lab15_2_CustomAPI.Models
             return DB.Query<Movie>(query, queryObj).ToList();
         }
 
-        public static List<Movie> FindMovies(string keyword)
+        public static List<Movie> GetMovies(string keyword)
         {
-
-
+            var queryObj = new { search = $"%{keyword}%" };
+            string query = "select * from movies where Name like @search";
+            return DB.Query<Movie>(query, queryObj).ToList();
         }
 
 

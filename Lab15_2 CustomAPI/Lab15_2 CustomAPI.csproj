@@ -5,5 +5,10 @@
     <RootNamespace>Lab15_2_CustomAPI</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="MySql.Data" Version="8.0.26" />
+  </ItemGroup>
+
 
 </Project>

@@ -7,22 +7,25 @@ using Dapper.Contrib.Extensions;
 
 namespace Lab15_2_CustomAPI.Models
 {
-    public class Movie
+	[Table("Movies")]
+	public class Movie
     {
+		[ExplicitKey]
+		public int ID { get; set; }
 
-		[Table("Movies")]
-		public class Product
-		{
-			[Key]
-			public int ID { get; set; }
-
-			public string Name { get; set; }
-			public string Genre { get; set; }
-			public string Director { get; set; }
-			public string Rating { get; set; }
-			public int Year { get; set; }
-
-		}
+		public string Name { get; set; }
+		public string Genre { get; set; }
+		public string Director { get; set; }
+		public string Rating { get; set; }
+		public int Year { get; set; }
 
 	}
+
+	[Table ("Genre")]
+	public class Genre
+    {
+		[Key]
+		public string Name { get; set; }
+
+    }
 }

@@ -1,4 +1,4 @@
-create database Lab15_2;
+﻿create database Lab15_2;
 use Lab15_2;
 
 
@@ -45,8 +45,4 @@ insert into movies (Name,Genre) values('404','thriller');
 insert into movies (Name,Genre) values('the hexed decimal','horror');
 insert into movies (Name,Genre) values('void: a return','other');
 
-#select* from movies;
-#select * from movies where Name = 'see sharper';
-#select* from movies where Name like '%see%';
-#select* from Genre;
-#drop database Lab15_2;
+
