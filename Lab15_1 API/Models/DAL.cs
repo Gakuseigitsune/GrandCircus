@@ -45,19 +45,12 @@ namespace Lab15_1_API.Models
             
         }
 
-        public static List<Card> hand
-        {
-            get { return Session_Hand._cards; }
-        }
-
-        public static List<Card> deck
-        {
-            get { return Session_Deck.cards.ToList(); }
-        }
+        public static List<Card> hand => Session_Hand._cards;
+        public static List<Card> deck => Session_Deck.cards.ToList();
+        public static bool Recharge => Session_Discard.Count == 52;
 
         public static Deck Session_Deck;
         public static List<string> Session_Discard = new List<string>();
-        bool recharge = (Session_Discard.Count == 52);
         public static Hand Session_Hand = new Hand();
 
     }

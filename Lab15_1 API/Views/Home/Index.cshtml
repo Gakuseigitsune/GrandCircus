@@ -12,11 +12,6 @@
 
         <tr> <td colspan="5" style="text-align:center;"><a href="GetHand">Draw cards</a></td></tr>
        
-
-
-   
-
-      
         <tr>
 
             @foreach (Card c in DAL.Session_Hand._cards)
@@ -31,7 +26,7 @@
             <td rowspan="3">
                 @foreach(string c in DAL.Session_Discard)
                 {
-                    <div style="font-weight:bold;"> Discarded @c</div>
+                    <div style="font-weight:bold; font-size:xx-small;"> Discarded @c</div>
                 }
             </td>
 

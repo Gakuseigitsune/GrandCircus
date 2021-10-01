@@ -42,7 +42,7 @@ namespace Lab15_1_API.Controllers
         
         public async Task<IActionResult> GetDeck()
         {
-            if (DAL.Session_Deck != null) return Redirect("Index");
+            if (DAL.Session_Deck != null && !DAL.Recharge) return Redirect("Index");
 
             var connection = await DAL.Client().GetAsync(DAL.API_GET_DECK);
             DAL.Session_Deck = await connection.Content.ReadAsAsync<Deck>();
@@ -75,7 +75,7 @@ namespace Lab15_1_API.Controllers
 
         public IActionResult Index()
         {
-            if (DAL.Session_Deck == null || !DAL.Session_Deck.success) return Redirect("GetDeck");
+            if (DAL.Session_Deck == null || DAL.Recharge) return Redirect("GetDeck");
 
             return View(DAL.Session_Deck);
         }
