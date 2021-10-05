@@ -14,6 +14,7 @@ namespace Lab11_2_StackOvr.Models
 
         public bool isAdmin { get; }
         public string Username { get; set; }
+
         public string email { get; set; }
 
     }

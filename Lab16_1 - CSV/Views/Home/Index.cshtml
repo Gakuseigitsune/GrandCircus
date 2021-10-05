@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+
+
+
+
+
+<form method="post" action="Success" id="userinfo">
+
+    FirstName  <input type="text" id="fName" name="FirstName" required="required" /><br />
+    LastName   <input type="text" id="lName" name="LastName" required="required" /><br />
+    Email      <input type="text" id="Email" name="Email" /><br />
+    Password   <input type="text" id="PW" name="Password" /><br />
+
+
+    <!--
+    <input type="submit" id="submit" onmouseover="checkInput"/> -->
+
+    <input type="submit" id="submit"   />
+
+</form>
+
+
+
+<script>
+
+
+
+
+
+
+    function checkEmpty(e) {
+
+        if (e == undefined || e == null) return " ";
+        else return e.value;
+    }
+
+
+
+    function checkInput() {
+
+        console.clear();
+
+        const emailPattern = /(\w+\u0040{1}\w+\.{1}\w+)/g;
+        const PWPattern = /(?=.*\u0040+)(?=.*\p{Lu}+)(?=.*\p{Ll}+)(?=.*\p{Nd}+).*/gu;
+
+        const emailCheck = new RegExp(emailPattern);
+        const PWCheck = new RegExp(PWPattern);
+
+        const inputEmail = checkEmpty(document.getElementById("Email"));
+        console.log(`email: ${inputEmail}`);
+        const inputPW = checkEmpty(document.getElementById("PW"));
+        console.log(`PW: ${inputPW}`);
+
+        var a = emailCheck.test(inputEmail);
+        var b = PWCheck.test(inputPW);
+
+
+        console.log(`email test: ${a}`);
+        console.log(`PW test: ${b}`);
+
+
+
+        let invalidInpt = a&&b;
+        console.log(`input check: ${a&&b}`);
+
+
+
+        if (!invalidInpt) {
+            document.getElementById("userinfo").setAttribute("action", "");
+            console.log('not passed');
+        }
+        else document.getElementById("userinfo").setAttribute("action", "Success");
+
+
+        console.log(`action: ${document.getElementById("userinfo").getAttribute("action")}`);
+
+       
+    }
+
+
+    let SubButton = document.querySelector('input[type=submit]');
+
+    SubButton.addEventListener("mouseover", checkInput);
+
+
+
+
+
+
+</script>

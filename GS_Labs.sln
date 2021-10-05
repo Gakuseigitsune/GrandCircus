@@ -50,6 +50,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab15_1 API", "Lab15_1 API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab15_2 CustomAPI", "Lab15_2 CustomAPI\Lab15_2 CustomAPI.csproj", "{9379C544-BFC8-424B-96C7-75D11EA05CB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab16_1 - CSV", "Lab16_1 - CSV\Lab16_1 - CSV.csproj", "{65F2821B-A73B-4724-BFDF-F5A4954D8396}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +142,10 @@ Global
 		{9379C544-BFC8-424B-96C7-75D11EA05CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9379C544-BFC8-424B-96C7-75D11EA05CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9379C544-BFC8-424B-96C7-75D11EA05CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F2821B-A73B-4724-BFDF-F5A4954D8396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F2821B-A73B-4724-BFDF-F5A4954D8396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F2821B-A73B-4724-BFDF-F5A4954D8396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F2821B-A73B-4724-BFDF-F5A4954D8396}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
