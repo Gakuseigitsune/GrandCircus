@@ -4,17 +4,14 @@
 
 
 
-
-
-
-
-
 <form method="post" action="Success" id="userinfo">
 
     FirstName  <input type="text" id="fName" name="FirstName" required="required" /><br />
     LastName   <input type="text" id="lName" name="LastName" required="required" /><br />
     Email      <input type="text" id="Email" name="Email" /><br />
     Password   <input type="text" id="PW" name="Password" /><br />
+               <input type="text" id="confirmPW" placeholder="confirm PW" />
+    
 
 
     <!--
@@ -56,21 +53,29 @@
         const inputPW = checkEmpty(document.getElementById("PW"));
         console.log(`PW: ${inputPW}`);
 
+        const confirmed = checkEmpty(document.getElementById("confirmPW"))
+        console.log(`confirm PW: ${confirmed}`);
+
         var a = emailCheck.test(inputEmail);
         var b = PWCheck.test(inputPW);
+        var c = inputPW === confirmed;
+
+        console.log(`email ${inputEmail} test: ${a}`);
+        console.log(`PW    ${inputPW} test: ${b}`);
+
+        console.log(`emailCheck: ${!!emailCheck.test(inputEmail)}`);
+        console.log(`PWCheck: ${!!PWCheck.test(inputPW)}`);
+        console.log(`= ${PWCheck.test(inputPW)&&emailCheck.test(inputEmail)}`)
+
+        var isValid = a && b && c;
+
+        let invalidInpt = emailCheck.test(inputEmail) && PWCheck.test(inputPW);
+        //let invalidInpt = a&&b;
+        console.log(`isValid: ${isValid}`);
+        console.log(`invalidInpt: ${invalidInpt}`);
 
 
-        console.log(`email test: ${a}`);
-        console.log(`PW test: ${b}`);
-
-
-
-        let invalidInpt = a&&b;
-        console.log(`input check: ${a&&b}`);
-
-
-
-        if (!invalidInpt) {
+        if (!isValid) {
             document.getElementById("userinfo").setAttribute("action", "");
             console.log('not passed');
         }
