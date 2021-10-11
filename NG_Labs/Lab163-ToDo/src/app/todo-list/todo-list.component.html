@@ -1,0 +1,21 @@
+<div style="text-align: center;"><h1>{{TaskName}}</h1></div>
+
+<ng-container *ngFor="let todo of TaskItems">
+    <div *ngIf="todo.completed else incomplete" style="background: #03ff00;">
+      {{todo.task}} <b>(completed!)</b>
+    </div>
+    <ng-template #incomplete>
+
+        <div style="background: #8b3734; color:white; font-weight: bold;">
+            <input type="checkbox" (click)="completeTask(todo)"> {{todo.task}} (pending)
+          </div>
+
+
+    </ng-template>
+
+
+  </ng-container>
+  <br>
+  <div *ngIf="allComplete" style="font-weight: bold; text-align: center;">(All tasks completed!)</div><br>
+  <button (click) = "addTask()">Add new task</button><input type="text" [(ngModel)] ="newTaskName" placeholder="New Task"><br>
+ 
