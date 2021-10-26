@@ -3,23 +3,29 @@
 }
 
 
+<div class="userInput">
+    <form method="post" action="" id="userinfo">
 
-<form method="post" action="Success" id="userinfo">
-
-    FirstName  <input type="text" id="fName" name="FirstName" required="required" /><br />
-    LastName   <input type="text" id="lName" name="LastName" required="required" /><br />
-    Email      <input type="text" id="Email" name="Email" /><br />
-    Password   <input type="text" id="PW" name="Password" /><br />
-               <input type="text" id="confirmPW" placeholder="confirm PW" />
-    
+        FirstName  <input type="text" id="fName" name="FirstName" required="required" /><br />
+        LastName   <input type="text" id="lName" name="LastName" required="required" /><br />
+        Email      <input type="text" id="Email" name="Email" /><br />
+        Password   <input type="text" id="PW" name="Password" /><br />
+        <input type="text" id="confirmPW" placeholder="confirm PW" />
 
 
-    <!--
-    <input type="submit" id="submit" onmouseover="checkInput"/> -->
 
-    <input type="submit" id="submit"   />
+        <!--
+        <input type="submit" id="submit" onmouseover="checkInput"/> -->
 
-</form>
+        <input type="submit" id="submit" disabled ="disabled"  />
+
+    </form>
+</div>
+
+<div id="err_missingInfo"   class="err" style="color:red; text-align:center; font-weight:bold;"  hidden >Please fill in all fields before submitting!</div>
+<div id="err_invalidEmail"  class="err" style="color:red; text-align:center; font-weight:bold;"  hidden >Please enter a valid email address!</div>
+<div id="err_invalidPW"     class="err" style="color:red; text-align:center; font-weight:bold;"  hidden >Invalid password!</div>
+<div id="err_invalidPWConf" class="err" style="color:red; text-align:center; font-weight:bold;"  hidden >Confirm PW must match</div>
 
 
 
@@ -30,9 +36,11 @@
 
 
 
+
+
     function checkEmpty(e) {
 
-        if (e == undefined || e == null) return " ";
+        if (e == undefined || e == null) return "";
         else return e.value;
     }
 
@@ -56,30 +64,85 @@
         const confirmed = checkEmpty(document.getElementById("confirmPW"))
         console.log(`confirm PW: ${confirmed}`);
 
-        var a = emailCheck.test(inputEmail);
-        var b = PWCheck.test(inputPW);
-        var c = inputPW === confirmed;
+        var email_OK = emailCheck.test(inputEmail);
+        var PW_OK = PWCheck.test(inputPW);
+        var PW_Conf = inputPW === confirmed;
 
-        console.log(`email ${inputEmail} test: ${a}`);
-        console.log(`PW    ${inputPW} test: ${b}`);
+        console.log(`email ${inputEmail} test: ${email_OK}`);
+        console.log(`PW    ${inputPW} test: ${PW_OK}`);
 
+        /*
         console.log(`emailCheck: ${!!emailCheck.test(inputEmail)}`);
         console.log(`PWCheck: ${!!PWCheck.test(inputPW)}`);
-        console.log(`= ${PWCheck.test(inputPW)&&emailCheck.test(inputEmail)}`)
+        console.log(`= ${PWCheck.test(inputPW)&&emailCheck.test(inputEmail)}`)*/
 
-        var isValid = a && b && c;
+        
 
-        let invalidInpt = emailCheck.test(inputEmail) && PWCheck.test(inputPW);
-        //let invalidInpt = a&&b;
-        console.log(`isValid: ${isValid}`);
-        console.log(`invalidInpt: ${invalidInpt}`);
+        let invalidInpt = (!email_OK || !PW_OK || !PW_Conf || (inputEmail === "" || inputPW === "" || confirmed === ""));
+        
 
+        if (invalidInpt) {
 
-        if (!isValid) {
+            document.getElementById("submit").setAttribute("disabled", "disabled");
+
             document.getElementById("userinfo").setAttribute("action", "");
-            console.log('not passed');
+
+            console.log(`invalidInpt: ${invalidInpt} :`);
+
+            if (!email_OK) {
+
+                document.getElementById("err_invalidEmail").removeAttribute("hidden");
+                console.log('email invalid');
+            } else document.getElementById("err_invalidEmail").setAttribute("hidden", "");
+
+            if (!PW_OK) {
+
+                document.getElementById("err_invalidPW").removeAttribute("hidden");
+                console.log('PW invalid');
+            } else document.getElementById("err_invalidPW").setAttribute("hidden", "");
+
+            if (!PW_Conf) {
+
+                document.getElementById("err_invalidPWConf").removeAttribute("hidden");
+                console.log('conf. PW invalid');
+            } else document.getElementById("err_invalidPWConf").setAttribute("hidden", "");
+
+
+            if (inputEmail === "" || inputPW === "" || confirmed === "") {
+
+                document.getElementById("err_missingInfo").removeAttribute("hidden");
+                console.log('missing field');
+
+            } else document.getElementById("err_missingInfo").setAttribute("hidden", "");
+
+
         }
-        else document.getElementById("userinfo").setAttribute("action", "Success");
+        else {
+
+            document.getElementById("userinfo").setAttribute("action", "Success");
+            document.getElementById("submit").removeAttribute("disabled");
+            
+            console.log('check OK!');
+            
+            var errors = document.getElementsByClassName("err");
+
+            for (var i = 0; i < errors.count; i++) {
+
+                errors[i].setAttribute("hidden", "");
+
+            }
+            
+           
+            
+
+            /*
+            var errors = document.getElementsByClassName("err");
+            console.log(errors);
+
+            Array.prototype.forEach(function (error) { error.setAttribute("hidden", "") }, errors);*/
+
+            console.log(' all errors hidden!');
+        }
 
 
         console.log(`action: ${document.getElementById("userinfo").getAttribute("action")}`);
@@ -88,7 +151,7 @@
     }
 
 
-    let SubButton = document.querySelector('input[type=submit]');
+    let SubButton = document.querySelector(".userInput");
 
     SubButton.addEventListener("mouseover", checkInput);
 

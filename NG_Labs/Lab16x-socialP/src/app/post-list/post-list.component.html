@@ -1,0 +1,22 @@
+<ng-container *ngFor="let u_post of AllPosts">
+
+<div style="margin: 10px;">
+    <app-usr-post [post]="u_post"></app-usr-post>
+</div>
+
+</ng-container>
+
+<div style="text-align: center;">
+
+    New Post:<br>
+    <input type="text" placeholder="Title" [(ngModel)]="newTitle"><br>
+    
+    <textarea placeholder="your thoughts" [(ngModel)]="newThought"></textarea><br>
+
+    <button (click)="newPost()">POST IT!</button>
+
+
+
+</div>
+
+
