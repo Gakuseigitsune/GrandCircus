@@ -31,6 +31,8 @@ newPost(){
   this.AllPosts.push({title: this.newTitle, posted: new Date().toString(), thought: this.newThought})
 }
 
+deletePost(aPost: IusrPost){ this.AllPosts.splice(this.AllPosts.indexOf(aPost), 1); }
+
 
   ngOnInit(): void {
   }

@@ -65,11 +65,11 @@
         console.log(`confirm PW: ${confirmed}`);
 
         var email_OK = emailCheck.test(inputEmail);
-        var PW_OK = PWCheck.test(inputPW);
+        var PW_OK = PWCheck.test(inputPW) && inputPW.length >= 8;
         var PW_Conf = inputPW === confirmed;
 
         console.log(`email ${inputEmail} test: ${email_OK}`);
-        console.log(`PW    ${inputPW} test: ${PW_OK}`);
+        console.log(`PW    ${inputPW} test: ${PW_OK}, match: ${PW_Conf}`);
 
         /*
         console.log(`emailCheck: ${!!emailCheck.test(inputEmail)}`);
@@ -126,9 +126,11 @@
             
             var errors = document.getElementsByClassName("err");
 
-            for (var i = 0; i < errors.count; i++) {
+            
+            console.log(errors);
+            for (var i = 0; i < errors.length; i++) {
 
-                errors[i].setAttribute("hidden", "");
+                errors[i].setAttribute( "hidden", "");
 
             }
             
