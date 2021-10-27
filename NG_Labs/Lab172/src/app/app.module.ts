@@ -4,13 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ReddtPostListComponent } from './reddt-post-list/reddt-post-list.component';
-
+import { ReddtPostComponent } from './reddt-post/reddt-post.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReddtPostListComponent
+    ReddtPostListComponent,
+    ReddtPostComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class ReddtPostListComponent implements OnInit {
 
-  @Input() ReddtList?: ReddtObj;
+  ReddtList?: ReddtObj;
   postCount: number = 0;
 
 
@@ -23,7 +23,7 @@ export class ReddtPostListComponent implements OnInit {
     (result: ReddtObj) =>{ 
 
       this.ReddtList = result;
-      this.postCount = result.data.children.length;
+      this.postCount = this.ReddtList.data.children.length;
       console.log(`list loaded! ${this.postCount} posts found`);
 
     }
@@ -34,6 +34,30 @@ export class ReddtPostListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  manualGetPosts(){
+
+    this.http.get<any>('https://reddit.com/r/aww/.json').subscribe(
+
+    (result: ReddtObj) =>{ 
+
+      this.ReddtList = result;
+      this.postCount = this.ReddtList.data.children.length;
+      console.log(`list loaded! ${this.postCount} posts found`);
+
+    }
+
+    ); 
+
+
+
+
+
+
+  }
+
+
+
 
   
 

@@ -15,10 +15,6 @@ export class ReddtPostComponent implements OnInit {
 
 
 
-
-
-
-
   constructor() { 
 
     console.log(this.post);
